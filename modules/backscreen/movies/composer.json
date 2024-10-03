@@ -1,0 +1,23 @@
+{
+    "name": "backscreen/movies",
+    "description": "movies api",
+    "autoload": {
+        "psr-4": {
+            "Backscreen\\Movies\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Edgars Balodis",
+            "email": "edgar_balodis@proton.me"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Backscreen\\Movies\\MovieServiceProvider"
+            ]
+        }
+    },  
+    "require": {}
+}

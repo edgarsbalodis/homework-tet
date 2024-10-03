@@ -1,0 +1,23 @@
+{
+    "name": "backscreen/helpers",
+    "description": "Helper functions",
+    "autoload": {
+        "psr-4": {
+            "Backscreen\\Helpers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Edgars Balodis",
+            "email": "edgar_balodis@proton.me"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Backscreen\\Helpers\\HelperServiceProvider"
+            ]
+        }
+    },  
+    "require": {}
+}

@@ -1,0 +1,23 @@
+{
+    "name": "backscreen/clients",
+    "description": "Clients description",
+    "autoload": {
+        "psr-4": {
+            "Backscreen\\Clients\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Edgars Balodis",
+            "email": "edgar_balodis@proton.me"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Backscreen\\Clients\\ClientServiceProvider"
+            ]
+        }
+    },  
+    "require": {}
+}
