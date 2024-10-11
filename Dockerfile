@@ -1,36 +1,30 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
-# Set the working directory
+# Set working directory
 WORKDIR /var/www
 
 # Install system dependencies
-RUN apt-get update --fix-missing && \
-    apt-get install -y --no-install-recommends \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
+RUN apt-get update && apt-get install -y \
     git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
     unzip \
-    libzip-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd zip \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy composer files
-COPY composer.json /var/www/
-COPY composer.lock /var/www/ || true  # Ignore if composer.lock does not exist
-
-# Install PHP dependencies
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Copy the rest of the application code
+# Copy the existing application code to the working directory
 COPY . /var/www
 
-# Set file permissions if needed
-RUN chown -R www-data:www-data /var/www
+# Set file permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www/storage
 
-# Start PHP-FPM
+# Expose port 9000 for PHP-FPM
+EXPOSE 9000
+
 CMD ["php-fpm"]
