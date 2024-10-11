@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
+    supervisor \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Install Composer
