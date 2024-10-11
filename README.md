@@ -14,7 +14,7 @@
 | ------------------------- |
 | Set up tests for packages |
 | Make packages installable |
-| Finish set up of Supervisor to manage Laravel async jobs   |
+| Finish set up of Supervisor to manage Laravel async jobs |
  
 
 
